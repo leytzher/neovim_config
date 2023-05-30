@@ -165,7 +165,7 @@ require('lazy').setup({
           group_empty = true,
         },
         filters = {
-          dotfiles = true,
+          dotfiles = false,
         },
       }
     end,
@@ -200,6 +200,46 @@ require('lazy').setup({
     end,
   },
 
+ -- Text manipulation plugins
+  { "tpope/vim-surround", event = "VeryLazy" },
+  { "tpope/vim-repeat", event = "VeryLazy" },
+  {
+    "echasnovski/mini.comment",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("mini.comment").setup()
+    end,
+  },
+  {
+    "echasnovski/mini.pairs",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("mini.pairs").setup()
+    end,
+  },
+  {
+    "echasnovski/mini.ai",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("mini.ai").setup()
+    end,
+  },
+  {
+    "github/copilot.vim",
+    event = "VeryLazy",
+  },
+
+
+  -- autopairs (not in Lazy)
+  --{
+  --'windwp/nvim-autopairs',
+  --require("nvim-autopairs").setup {}
+
+  --},
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -220,6 +260,16 @@ require('lazy').setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+vim.o.tabstop = 4
+vim.o.expandtab = true -- use spaces instead of tabs
+vim.o.laststatus = 2 -- always display the status in the last line
+vim.o.showmatch = true -- show matching brackets
+
+vim.o.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+vim.o.smartcase = true -- Don't ignore case with capitals
+vim.o.smarttab = true -- Insert indents automatically
+vim.o.smartindent = true -- Insert indents automatically
+vim.o.wrap = true -- Wrap long lines
 
 -- Set highlight on search
 vim.o.hlsearch = false
